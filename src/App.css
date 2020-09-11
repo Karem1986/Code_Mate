@@ -2,21 +2,34 @@
   text-align: center;
 }
 
-.App-header {
-  background-color: black;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.navbar {
+  background-color: purple;
+  height: 250px;
   font-size: calc(10px + 2vmin);
+}
+
+.logo {
+  width: 190px;
+  height: 190px;
+  display: "inline";
+  position: relative;
+  margin: 20px;
+  padding: 10px;
+}
+
+a:link {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.homepage {
+  background-color: black;
+  color: white;
 }
 
+.video-homepage {
+  width: 400;
+  height: 300;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
