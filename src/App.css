@@ -21,6 +21,10 @@
   background-color: black;
   color: white;
 }
+.testimonials {
+  margin: 50px;
+  padding: 5%;
+}
 
 @keyframes App-logo-spin {
   from {
