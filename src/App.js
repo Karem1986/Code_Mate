@@ -4,7 +4,7 @@ import Homepage from "./pages/Homepage";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Switch, Route } from "react-router-dom"; //gives a website for each web page
 import "./App.css";
-import BookSession from "./pages/BookSession";
+import BookSession from "./pages/Calendar/index";
 
 function App() {
   return (
