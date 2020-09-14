@@ -26,11 +26,15 @@
   padding: 5%;
 }
 
-@keyframes App-logo-spin {
+.h2-book-session {
+  color: aquamarine;
+}
+
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
+} */
