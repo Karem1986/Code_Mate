@@ -1,13 +1,47 @@
 import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Popover from "@material-ui/core/Popover";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 import index from "./index.css";
 
-export default function BookSession() {
-  const [selectDay, set_Day] = useState("");
+const useStyles = makeStyles((theme) => ({
+  typography: {
+    padding: theme.spacing(2),
+  },
+  button: {
+    backgroundColor: "green",
+    borderRadius: 150,
+    fontSize: 15,
+    minWidth: 250,
+    margin: 10,
+    padding: 15,
+    fontWeight: "bold",
+  },
+}));
 
-  const event_Date = (event) => {
-    set_Day(event.target.value);
-    console.log("select Day");
+export default function BookSession() {
+  const classes = useStyles();
+  const [anchorEl, set_Day] = useState(null);
+
+  //Upon clicking on a day, the user will see a pop up with a date dropdown where can select a session
+  const handleClick = (event) => {
+    // set_Day(event.currentTarget); //shows pops up upon click
+    //if click inside day then show pop up
+    if (set_Day(event.currentTarget)) {
+      return "simple-popover";
+    } else {
+      return undefined;
+    }
   };
+
+  const handleClose = () => {
+    set_Day(null); //if not click then do not show pop up
+  };
+
+  //logic for pop up--Boolean
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
 
   return (
     <div>
@@ -41,7 +75,35 @@ export default function BookSession() {
                 <li>Sa</li>
                 <li>Su</li>
               </ul>
-              <ul className="days" onClick={event_Date}>
+
+              <div hidden="true">
+                <Button
+                  aria-describedby={id}
+                  variant="contained"
+                  onClick={handleClick}
+                  className={classes.button}
+                >
+                  Select a time slot
+                </Button>
+                <Popover
+                  id={id}
+                  open={open}
+                  anchorEl={anchorEl}
+                  onClose={handleClose}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "center",
+                  }}
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "center",
+                  }}
+                >
+                  <Typography className={classes.typography}></Typography>
+                </Popover>
+              </div>
+
+              <ul className="days">
                 <li>
                   <span className="day-item">1</span>
                 </li>
@@ -65,13 +127,6 @@ export default function BookSession() {
                 </li>
                 <li>
                   <span className="day-item">8</span>
-
-                  <div className="repeating-event">
-                    <span className="event-title">
-                      This is an event with a large text
-                    </span>
-                    <span className="event-duration">(3)</span>
-                  </div>
                 </li>
                 <li>
                   <span className="day-item">9</span>
