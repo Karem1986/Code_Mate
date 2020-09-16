@@ -2,26 +2,39 @@
   text-align: center;
 }
 
-.App-header {
-  background-color: black;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.navbar {
+  background-color: purple;
+  height: 250px;
   font-size: calc(10px + 2vmin);
+}
+
+.logo {
+  width: 190px;
+  height: 190px;
+  display: "inline";
+  position: relative;
+  margin: 20px;
+  padding: 10px;
+}
+
+.homepage {
+  background-color: black;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.testimonials {
+  margin: 50px;
+  padding: 5%;
 }
 
-@keyframes App-logo-spin {
+.h2-book-session {
+  color: black;
+}
+
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
+} */
