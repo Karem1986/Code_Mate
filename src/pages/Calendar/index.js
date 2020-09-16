@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Popover from "@material-ui/core/Popover";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
 import index from "./index.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -10,29 +11,35 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
   button: {
-    backgroundColor: "green",
-    borderRadius: 150,
-    fontSize: 15,
-    minWidth: 250,
-    margin: 10,
-    padding: 15,
+    backgroundColor: "black",
+    borderRadius: 100,
+    fontSize: 10,
+    minWidth: 50,
+    margin: 5,
+    padding: 5,
     fontWeight: "bold",
+    color: "white",
   },
 }));
 
 export default function BookSession() {
   const classes = useStyles();
   const [anchorEl, set_Day] = useState(null);
+  let [showButton, set_Button] = useState(null);
+  //which time slot a person is selecting
+  const [setTime, set_Time] = useState("");
 
   //Upon clicking on a day, the user will see a pop up with a date dropdown where can select a session
   const handleClick = (event) => {
-    // set_Day(event.currentTarget); //shows pops up upon click
-    //if click inside day then show pop up
-    if (set_Day(event.currentTarget)) {
-      return "simple-popover";
-    } else {
-      return undefined;
-    }
+    set_Day(event.currentTarget); //shows pops up upon click
+  };
+
+  const onChange = (event) => {
+    const [day, time] = event.currentTarget.value.split("-");
+    //if click inside select options show the pop up
+    // console.log("event", event);
+    set_Button(day);
+    set_Time(time);
   };
 
   const handleClose = () => {
@@ -76,144 +83,84 @@ export default function BookSession() {
                 <li>Su</li>
               </ul>
 
-              <div hidden="true">
-                <Button
-                  aria-describedby={id}
-                  variant="contained"
-                  onClick={handleClick}
-                  className={classes.button}
-                >
-                  Select a time slot
-                </Button>
-                <Popover
-                  id={id}
-                  open={open}
-                  anchorEl={anchorEl}
-                  onClose={handleClose}
-                  anchorOrigin={{
-                    vertical: "bottom",
-                    horizontal: "center",
-                  }}
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "center",
-                  }}
-                >
-                  <Typography className={classes.typography}></Typography>
-                </Popover>
-              </div>
-
               <ul className="days">
-                <li>
-                  <span className="day-item">1</span>
-                </li>
-                <li>
-                  <span className="day-item">2</span>
-                </li>
-                <li>
-                  <span className="day-item">3</span>
-                </li>
-                <li>
-                  <span className="day-item">4</span>
-                </li>
-                <li>
-                  <span className="day-item">5</span>
-                </li>
-                <li>
-                  <span className="day-item">6</span>
-                </li>
-                <li>
-                  <span className="day-item">7</span>
-                </li>
-                <li>
-                  <span className="day-item">8</span>
-                </li>
-                <li>
-                  <span className="day-item">9</span>
-                  <span className="repeating-event"></span>
-                  <span className="repeating-event"></span>
-                  <span className="repeating-event"></span>
-                </li>
-                <li className="today">
-                  <span className="day-item">10</span>
-                  <span className="repeating-event"></span>
-                  <span className="repeating-event"></span>
-                </li>
-                <li>
-                  <span className="day-item">11</span>
-                </li>
-                <li>
-                  <span className="day-item">12</span>
-                </li>
-                <li>
-                  <span className="day-item">13</span>
-                </li>
-                <li>
-                  <span className="day-item">14</span>
-                </li>
-                <li className="selected">
-                  <span className="day-item">15</span>
-                </li>
-                <li>
-                  <span className="day-item">16</span>
-                </li>
-                <li>
-                  <span className="day-item">17</span>
-                </li>
-                <li>
-                  <span className="day-item">18</span>
-                </li>
-                <li>
-                  <span className="day-item">19</span>
-                </li>
-                <li>
-                  <span className="day-item">20</span>
-                </li>
-                <li>
-                  <span className="day-item">21</span>
-                </li>
-                <li>
-                  <span className="day-item">22</span>
-                </li>
-                <li>
-                  <span className="day-item">23</span>
-                </li>
-                <li>
-                  <span className="day-item">24</span>
-                </li>
-                <li>
-                  <span className="day-item">25</span>
-                </li>
-                <li>
-                  <span className="day-item">26</span>
-                </li>
-                <li>
-                  <span className="day-item">27</span>
-                </li>
-                <li>
-                  <span className="day-item">28</span>
-                </li>
-                <li>
-                  <span className="day-item">29</span>
-                </li>
-                <li>
-                  <span className="day-item">30</span>
-                </li>
-                <li>
-                  <span className="day-item">31</span>
-                </li>
-                <li>
-                  <span className="day-item extra-days">1</span>
-                </li>
-                <li>
-                  <span className="day-item extra-days">2</span>
-                </li>
-                <li>
-                  <span className="day-item extra-days">3</span>
-                </li>
-                <li>
-                  <span className="day-item extra-days">4</span>
-                </li>
+                {[
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6,
+                  7,
+                  8,
+                  9,
+                  10,
+                  11,
+                  12,
+                  13,
+                  15,
+                  16,
+                  17,
+                  18,
+                  19,
+                  20,
+                  21,
+                  22,
+                  23,
+                  24,
+                  25,
+                  26,
+                  27,
+                  28,
+                  29,
+                  30,
+                  31,
+                  1,
+                ].map((number) => (
+                  <li>
+                    <span className="day-item">{number}</span>
+                    {showButton === number.toString() ? (
+                      <div>
+                        <Button
+                          aria-describedby={id}
+                          variant="contained"
+                          onClick={handleClick}
+                          className={classes.button}
+                        >
+                          Choose your buddy now
+                        </Button>
+                        <Popover
+                          id={id}
+                          open={open}
+                          anchorEl={anchorEl}
+                          onClose={handleClose}
+                          anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "center",
+                          }}
+                          transformOrigin={{
+                            vertical: "top",
+                            horizontal: "center",
+                          }}
+                        >
+                          <Typography className={classes.typography}>
+                            <Link to="/code_session/:select_buddy">
+                              Buddies
+                            </Link>
+                          </Typography>
+                        </Popover>
+                      </div>
+                    ) : null}
+
+                    <select onChange={onChange} value={setTime}>
+                      {" "}
+                      <option value="">Choose a time slot</option>
+                      <option value={`${number}-9am`}>9am-10am</option>
+                      <option value={`${number}-10am`}>10am-11am</option>
+                      <option value={`${number}-11am`}>11am-12am</option>
+                    </select>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
