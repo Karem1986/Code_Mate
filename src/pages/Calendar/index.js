@@ -82,7 +82,11 @@ export default function BookSession() {
 
   //Select a month in the calendar
   const onMonth = (event) => {
-    set_Month(event.currentTarget); // use can select any month in calendar to book sessions
+    const [month] = event.currentTarget.value.split("-"); //IT DOES NOT WORK--STEPS HERE DARREN:
+    //if click inside select options show the pop up
+    // console.log("event", event);
+
+    set_Month(month); // use can select any month in calendar to book sessions
   };
 
   return (
@@ -102,6 +106,53 @@ export default function BookSession() {
                   </li>
                   <ul className="month">
                     <h3>September </h3>
+                    <Calendar
+                      tileContent={
+                        <div>
+                          <select onChange={onMonth} value={Month}>
+                            {" "}
+                            <option value="">Choose a time slot</option>
+                            <option value={`-9am`}>9am-10am</option>
+                            <option value={`-10am`}>10am-11am</option>
+                            <option value={`-11am`}>11am-12am</option>
+                          </select>
+                          <li>
+                            {showButton ? (
+                              <div>
+                                <Button
+                                  aria-describedby={id}
+                                  variant="contained"
+                                  onClick={handleClick}
+                                  className={classes.button}
+                                >
+                                  Choose your buddy now
+                                </Button>
+                                <Popover
+                                  id={id}
+                                  open={open}
+                                  anchorEl={anchorEl}
+                                  onClose={handleClose}
+                                  anchorOrigin={{
+                                    vertical: "bottom",
+                                    horizontal: "center",
+                                  }}
+                                  transformOrigin={{
+                                    vertical: "top",
+                                    horizontal: "center",
+                                  }}
+                                >
+                                  <Typography className={classes.typography}>
+                                    <Link to="/code_session/:select_buddy">
+                                      Buddies
+                                    </Link>
+                                  </Typography>
+                                </Popover>
+                              </div>
+                            ) : null}
+                          </li>
+                        </div>
+                      }
+                    />
                   </ul>
                   <li className="next">
                     <a className="btn">
