@@ -4,6 +4,8 @@ import Popover from "@material-ui/core/Popover";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import Calendar from "react-calendar";
+
 import index from "./index.css";
 
 const useStyles = makeStyles((theme) => ({
@@ -22,12 +24,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+//Month icon style components:
+
+// const theme = {
+//   calendarIcon: {
+//     textColor: "white", // text color of the header and footer
+//     primaryColor: "#0da472", // background of the header and footer
+//     backgroundColor: "#fafafa",
+//   },
+// };
+
 export default function BookSession() {
   const classes = useStyles();
   const [anchorEl, set_Day] = useState(null);
   let [showButton, set_Button] = useState(null);
   //which time slot a person is selecting
   const [setTime, set_Time] = useState("");
+  //Select a week during a month
+  const [setWeek, set_Week] = useState(""); //week in calendar
+  const [Month, set_Month] = useState(""); //month in calendar
 
   //Upon clicking on a day, the user will see a pop up with a date dropdown where can select a session
   const handleClick = (event) => {
@@ -50,6 +65,16 @@ export default function BookSession() {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
+  //Select a week within a month
+  const handleWeek = (event) => {
+    set_Week(event.currentTarget); //updates to the previous or following week in the calendar
+  };
+
+  //Select a month in the calendar
+  const onMonth = (event) => {
+    set_Month(event.currentTarget); // use can select any month in calendar to book sessions
+  };
+
   return (
     <div>
       <h2 className="h2-book-session">Book your session here</h2>
@@ -65,7 +90,9 @@ export default function BookSession() {
                       <i className="fa fa-angle-left" aria-hidden="true"></i>
                     </a>
                   </li>
-                  <li className="month">August 2017</li>
+                  <ul className="month">
+                    <h3>September </h3>
+                  </ul>
                   <li className="next">
                     <a className="btn">
                       <i className="fa fa-angle-right" aria-hidden="true"></i>

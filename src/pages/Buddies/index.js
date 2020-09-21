@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DevProfiles from "../../components/DevProfiles";
+import index from "./index.css";
 import axios from "axios";
 
 export default function Buddies() {
@@ -12,7 +13,7 @@ export default function Buddies() {
       try {
         const API_URL = `https://api.github.com`;
 
-        const profiles = await axios.get(`${API_URL}/users?limit=5`);
+        const profiles = await axios.get(`${API_URL}/users`);
 
         console.log("testing api", profiles);
         setGithubUsers(profiles.data);
@@ -33,7 +34,7 @@ export default function Buddies() {
             <DevProfiles
               key={index}
               login={data.login}
-              url={data.url}
+              html_url={data.html_url}
               avatar_url={data.avatar_url}
             />
           );
