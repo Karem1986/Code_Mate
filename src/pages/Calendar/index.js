@@ -36,8 +36,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function BookSession() {
   const classes = useStyles();
-  const [anchorEl, set_Day] = useState(null);
-  let [showButton, set_Button] = useState(null);
+
+  // 2. Move this state to the new component described in step 1. You will need them otherwise
+  // everything breaks. Renamed this to "setAnchorEl" to be less confusing (day and anchor has nothing
+  // to do with each other so I didn't know what was going on here
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  // 3. Also move this state to the new component described in step 1. This should be "false" to start with.
+  let [showButton, setShowButton] = useState(false);
+  
   //which time slot a person is selecting
   const [setTime, set_Time] = useState("");
   //Select a week during a month
@@ -46,21 +53,24 @@ export default function BookSession() {
 
   //Upon clicking on a day, the user will see a pop up with a date dropdown where can select a session
   const handleClick = (event) => {
-    set_Day(event.currentTarget); //shows pops up upon click
+    setAnchorEl(event.currentTarget); //shows pops up upon click
   };
 
+  // 5. Move this to the new component too to update state moved in step 3... Removed some unnecessary code
+  // as all you need to check something is selected is if the value is "" or not.
   const onChange = (event) => {
-    const [day, time] = event.currentTarget.value.split("-");
-    //if click inside select options show the pop up
-    // console.log("event", event);
-    set_Button(day);
-    set_Time(time);
+    if (event.currentTarget.value) {
+      setShowButton(true);
+    }
   };
 
+  // 4. Move this to the new component described in step 1. This is important for updating the state
+  // moved in step 2.
   const handleClose = () => {
-    set_Day(null); //if not click then do not show pop up
+    setAnchorEl(null); //if not click then do not show pop up
   };
 
+  // 6. Move this across to the new component too.
   //logic for pop up--Boolean
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
@@ -195,8 +205,13 @@ export default function BookSession() {
                   31,
                   1,
                 ].map((number) => (
+                  // 1. Move this HTML to a separate React component. This is so each copy of this component
+                  // will have its own state for figuring out whether to show the "choose your buddy" button
+                  // and you don't have to do everything here and rely on the day number changing (a bit weird to understand)
                   <li>
                     <span className="day-item">{number}</span>
+                    {/* 7. Once you moved everything to that new component I mentioned... you only need to check showButton
+                    is true/false to decide whether to show the button or not... */}
                     {showButton === number.toString() ? (
                       <div>
                         <Button
