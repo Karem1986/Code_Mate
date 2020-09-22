@@ -44,7 +44,7 @@ export default function BookSession() {
 
   // 3. Also move this state to the new component described in step 1. This should be "false" to start with.
   let [showButton, setShowButton] = useState(false);
-  
+
   //which time slot a person is selecting
   const [setTime, set_Time] = useState("");
   //Select a week during a month
@@ -86,7 +86,7 @@ export default function BookSession() {
     //if click inside select options show the pop up
     // console.log("event", event);
 
-    set_Month(month); // use can select any month in calendar to book sessions
+    set_Month(month); // user can select any month in calendar to book sessions
   };
 
   return (
