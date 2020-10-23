@@ -73,9 +73,7 @@ export default function Homepage() {
           );
         })}
       </div>
-      <button onClick={goBookingSession}>
-        Get your free trial session today
-      </button>
+      <button onClick={goBookingSession}>Book your free session</button>
     </div>
   );
 }
