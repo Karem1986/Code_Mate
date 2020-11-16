@@ -1,9 +1,15 @@
 import React from "react";
-import video from "../../src/video.mp4";
+import video from "./video.mp4";
 import { useHistory } from "react-router-dom";
-import Testimonials from "../components/Testimonials";
+import Testimonials from "../../components/Testimonials";
+import { Box, Grid, Paper, Snackbar, Button, Slide } from "@material-ui/core";
+import { useStyles } from "./styles"
 
 export default function Homepage() {
+
+  //Material UI STYLES:
+  const classes = useStyles()
+
   //Dynamic route for button to book session page
   const history = useHistory();
   //Hooks: useState and useEffect ---> to fetch data from API for example
@@ -51,7 +57,7 @@ export default function Homepage() {
         src={video}
         alt="code-mate"
         autoPlay="true"
-        width="800"
+        width="900"
         height="500"
       ></video>
 
