@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import video from "../../src/video.mp4";
 import { useHistory } from "react-router-dom";
 import Testimonials from "../components/Testimonials";
@@ -14,7 +14,7 @@ export default function Homepage() {
       name: "Olena",
       description: "Front end developer",
       imageUrl:
-        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+        "https://avatars0.githubusercontent.com/u/7324142?s=460&u=def0ad84ddc36e8c631028faecfe5b6bfdded1cb&v=4",
       testimonial:
         "Code mate is what I needed to motivate myself with someone that understands the struggle of coding your own projects",
     },
@@ -56,7 +56,7 @@ export default function Homepage() {
       ></video>
 
       <div>
-        <h2>Why should you use Code Mate?</h2>
+      
         <div>
           <h3>This is what our happy developers say</h3>
         </div>

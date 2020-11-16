@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import DevProfiles from "../../components/DevProfiles";
-import index from "./index.css";
 import axios from "axios";
 
 export default function Buddies() {
   const [githubUsers, setGithubUsers] = useState([]);
 
-  //Display the profiles from Github until backend users is created:
+  //Display the profiles from Github until backend is created:
 
   useEffect(() => {
     async function getProfiles() {
