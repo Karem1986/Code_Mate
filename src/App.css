@@ -10,6 +10,8 @@
 }
 a {
   color: purple;
+  padding: 20px;
+  margin: auto;
 }
 
 .logo {
