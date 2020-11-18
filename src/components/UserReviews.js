@@ -1,6 +1,6 @@
 import React from "react";
 
-// Mui components
+// Material UI components
 import { makeStyles, createStyles } from "@material-ui/core/styles";
 import { red } from "@material-ui/core/colors";
 import Card from "@material-ui/core/Card";
@@ -19,8 +19,6 @@ import {
   withStyles,
   Paper,
 } from "@material-ui/core";
-
-import FaceIcon from "@material-ui/icons/Face";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
@@ -48,22 +46,9 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-const HtmlTooltip = withStyles((theme) => ({
-  tooltip: {
-    backgroundColor: "#f5f5f9",
-    color: "rgba(0, 0, 0, 0.87)",
-    minWidth: 400,
-    fontSize: theme.typography.pxToRem(14),
-    border: "1px solid #dadde9",
-    textColor: "#000000",
-  },
-}))(Tooltip);
 
-function SlideTransition(props) {
-  return <Slide {...props} direction="up" />;
-}
 
-export default function PremierFounder(props) {
+export default function UserReview(props) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     open: false,

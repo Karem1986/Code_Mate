@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import PremierFounder from "../../components/PremierFounder";
+import UserReview from "../../components/UserReviews";
 import axios from "axios";
 // import { API_URL_QUOTES } from "../../constants/constants";
 import { Box, Grid, Paper, Snackbar, Button, Slide } from "@material-ui/core";
@@ -48,10 +48,6 @@ function TransitionDown(props) {
 export default function Homepage() {
   const classes = useStyles();
 
-
-
-
-
   return (
     <Box mt={4} className={classes.root}>
       <Grid container spacing={3}>
@@ -59,7 +55,7 @@ export default function Homepage() {
         {premierFounders.map((founder) => {
           return (
             <Grid item xs={12} sm={4}>
-              <PremierFounder
+              <UserReview
                 key={Math.random()}
                 name={founder.name}
                 description={founder.description}
