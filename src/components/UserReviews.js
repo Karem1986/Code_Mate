@@ -97,8 +97,7 @@ export default function UserReview(props) {
           <Typography paragraph>{props.testimonial}</Typography>
         </CardContent>
         <CardActions spacing={5}>
-     
-      
+    
         </CardActions>
       </Paper>
     </Card>

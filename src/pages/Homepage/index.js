@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import UserReview from "../../components/UserReviews";
-import axios from "axios";
-// import { API_URL_QUOTES } from "../../constants/constants";
+import { useHistory } from "react-router-dom";
 import { Box, Grid, Paper, Snackbar, Button, Slide } from "@material-ui/core";
 import { useStyles } from "./styles";
 
@@ -35,18 +34,15 @@ const premierFounders = [
   },
 ];
 
-function getRandomNumber(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min));
-}
-
-function TransitionDown(props) {
-  return <Slide {...props} direction="down" />;
-}
 
 export default function Homepage() {
+   //Dynamic route for button to book session page
+   const history = useHistory();
   const classes = useStyles();
+   //button to book session
+   const goBookingSession = (e) => {
+    history.push(`/code_session`);
+  };
 
   return (
     <Box mt={4} className={classes.root}>
@@ -66,7 +62,15 @@ export default function Homepage() {
           );
         })}
 
-        
+<Button
+            elevation={23}
+            variant="contained"
+            color="primary"
+            className={classes.button}
+            onClick={goBookingSession}
+          >
+            About
+          </Button>
       </Grid>
     </Box>
   );
