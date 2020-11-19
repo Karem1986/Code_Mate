@@ -1,4 +1,5 @@
 import { makeStyles, createStyles } from "@material-ui/core/styles";
+import { green } from "@material-ui/core/colors";
 
 export const useStyles = makeStyles((theme) =>
   createStyles({
@@ -11,5 +12,10 @@ export const useStyles = makeStyles((theme) =>
       textAlign: "center",
       alignItems: "center",
     },
+    button: {
+      size: "large",
+      backgroundColor: green[500],
+      
+    }
   })
 );

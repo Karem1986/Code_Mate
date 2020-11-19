@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import UserReview from "../../components/UserReviews";
 import { useHistory } from "react-router-dom";
-import { Box, Grid, Paper, Snackbar, Button, Slide } from "@material-ui/core";
+import { Box, Grid, Button } from "@material-ui/core";
 import { useStyles } from "./styles";
 
 const premierFounders = [
@@ -29,7 +29,7 @@ const premierFounders = [
     imageUrl:
       "https://avatars2.githubusercontent.com/u/54165871?s=460&u=cc54240dff97246e937161b37796991ddeeb3e03&v=4",
       testimonial:
-      "I have met lots of awesome web developers thanks to Code Mate and the best is that is f",
+      "I have met lots of awesome web developers thanks to Code Mate and the best is that is f&$**^8 awesome!",
   
   },
 ];
@@ -61,16 +61,20 @@ export default function Homepage() {
             </Grid>
           );
         })}
-
+<Grid container justify = "center">
 <Button
             elevation={23}
             variant="contained"
             color="primary"
+            size="large"
+            alignItems="center"
+            justify="center"
             className={classes.button}
             onClick={goBookingSession}
           >
-            About
+            Book a free session
           </Button>
+          </Grid>
       </Grid>
     </Box>
   );
